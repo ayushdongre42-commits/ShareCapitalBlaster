@@ -1,0 +1,31 @@
+name: Build Godot APK
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  export-android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Godot
+        uses: firebelley/setup-godot@v1
+        with:
+          godot-version: "3.5.2"
+          use-mono: false
+
+      - name: Export Android
+        uses: firebelley/godot-export@v1
+        with:
+          export-type: "Android"
+          godot-version: "3.5.2"
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: ShareCapitalBlaster-Android
+          path: build/android/*.apk
