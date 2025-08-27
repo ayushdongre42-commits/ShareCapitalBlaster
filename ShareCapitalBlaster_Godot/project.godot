@@ -1,0 +1,6 @@
+
+[gd_resource type="ConfigFile" load_steps=2 format=2]
+
+[application]
+config/name="Share Capital Blaster"
+run/main_scene="res://scenes/Main.tscn"
